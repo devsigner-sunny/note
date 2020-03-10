@@ -75,3 +75,36 @@ dcd cex
 
 #then, make sure to commit the change of configuration
 ```
+
+---
+
+## Solution for errors
+
+1. clear cache drupal8, drupal7
+
+```zsh
+dcd cr
+dcd cc all
+```
+
+2. git pull, then check if you have any .yml file or modules.
+
+```zsh
+#moudles
+composer install
+
+#.yml
+dcd cim -y
+```
+
+3. Rebuild
+
+```zsh
+dcd up -d --force
+```
+
+### Reset local user db
+
+```zsh
+dcd sqlsan --sanitize-password=KG5n9yJrGZR --sanitize-email=no --whitelist-fields=field_lms_client_id,field_real_email
+```
