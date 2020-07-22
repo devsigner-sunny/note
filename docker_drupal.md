@@ -108,3 +108,13 @@ dcd up -d --force
 ```zsh
 dcd sqlsan --sanitize-password=KG5n9yJrGZR --sanitize-email=no --whitelist-fields=field_lms_client_id,field_real_email
 ```
+
+### When you meet server error 502 or 500
+
+1. run below code
+```zsh
+docker-compose logs -f nginx
+```
+2. copy the error code, and google it
+3. Find patch (usually green highligted, check version)
+4. Click it and copy the url into composer.json "patches"
