@@ -118,3 +118,21 @@ docker-compose logs -f nginx
 2. copy the error code, and google it
 3. Find patch (usually green highligted, check version)
 4. Click it and copy the url into composer.json "patches"
+
+### whenever you see Assert.php error
+```zsh
+dc up -d --f
+```
+
+error browserslist@4.14.0: The engine "node" is incompatible with this module. Expected version "^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7". Got "13.1.0"
+error Found incompatible module.
+
+
+yarn install --ignore-engines
+./node_modules/.bin/gulp
+
+
+### Rebuild specific container
+`
+ dc up -d --b cli
+`
