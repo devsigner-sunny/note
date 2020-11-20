@@ -25,7 +25,7 @@ docker-compose ps
 #get into the drush (alias: dcd)
 docker-compose exec cli bash
 
-#see a list of available site aliases
+#see a list of available site aliases 
 drush sa
 
 #import dump file onto destination database
@@ -60,24 +60,6 @@ docker network ls
 #then, copy the right name you are working on
 
 docker inspect $name
-```
-
-## Drupal module/config
-
-```zsh
-#download
-composer require drupal/$modulename
-
-#import: config import (optional -y)
-dcd cim -y
-
-#enable
-dcd en $modulename -y
-
-#export (to share)
-dcd cex
-
-#then, make sure to commit the change of configuration
 ```
 
 ## Email

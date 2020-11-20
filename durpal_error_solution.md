@@ -95,3 +95,13 @@ export COMPOSER_MEMORY_LIMIT=-1
 
 //run this in container, and try again
 ```
+
+
+## Lagoon server error 500
+1. run the logs
+```
+docker-compose logs -f nginx
+```
+2. refresh the page - still not working then,
+3. Remove vendor folder, composer install again 
+4. try composer dump-autoload -o / composer dumpautoload

@@ -24,6 +24,28 @@ Host lagoon
 
 # Solutions
 
+## Debug
+1. debug on - docker-compose.yml (uncommented XDEBUG_ENABLE)
+2. reup php: dcupd --f php
+3. Start phpstorm debug icon on
+4. Chrome debug on
+5. Make own stop point - Type dummy variable above the line you want to make stop point
+```php
+function youthtown_core_views_pre_render(ViewExecutable $view) {
+  $yay = '';
+  # let's say we wanna know $view->id 
+  if ($view->id() == 'testimonial_slick_view') {
+    $view->element['#attached']['library'][] = 'slick/slick';
+  }
+}
+```
+6. 2ways to figure it out what's the value of $view->id()
+  - highlighted, right click -> evaluate
+  - highlighted, right click -> add watchers
+
+
+
+
 ## To give permission
 ```
 sudo chmod 744 $directory_name
