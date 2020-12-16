@@ -20,6 +20,12 @@ dcd cex
 #then, make sure to commit the change of configuration
 ```
 
+## When your module not working properly
+1. Check If it needs any libraries as requirements on document.
+2. Check the library is generated and loaded (web/libraries)
+3. Check the status report nothiing complain it
+4. Check console error
+
 
 ## Entity Queue
     - nstall entity queue
@@ -34,6 +40,7 @@ dcd cex
 ## Slick - (ref. youthtown)
 **Not only slick, if the module requires their own library, Do the same step**
 
+### Install
 1. composer.json: install slick, slick view, kenwheeler/slick --- read requirement on module page (blazy)
 2. package.json: check the dependencies - blazy
 3. lagoon/install.sh
@@ -79,7 +86,7 @@ function youthtown_core_views_pre_render(ViewExecutable $view) {
 (function ($, Drupal) {
   'use strict';
 
-  Drupal.behaviors.orchidSlick = {
+  Drupal.behaviors.youthtownSlick = {
     attach: function (context, settings) {
       const slickTargets = [
         {
@@ -87,6 +94,16 @@ function youthtown_core_views_pre_render(ViewExecutable $view) {
           target: '.slick__slider',
           infinite: false,
         },
+        {
+          parent: '.view-gallery',
+          //parent level of slide
+          target: '.field-content',
+          settings: {
+            slidesToShow: 3,
+            dots: true,
+            infinite: false,
+          }
+        }
       ];
 
       $(document).ready(function () {
@@ -100,6 +117,10 @@ function youthtown_core_views_pre_render(ViewExecutable $view) {
     }
   };
 })(jQuery, Drupal);
+
+
+
+
 ```
 
 - 2) For every page we add those library
@@ -114,3 +135,37 @@ function youthtown_core_page_attachments_alter(array &$attachments) {
   $attachments['#attached']['library'][] = 'youthtown_core/slick';
 }
 ```
+
+### Setup
+1. enable slick, slick view, slick ui, balzy
+2. config > media > slick (setup the slick)
+3. view block > format: Slick carousel, settings > Optionset Main: select I created on step2
+ 
+
+
+ ## Colorbox
+ 1. Install the libraries through the documents by downloading (place the directory colorbox inside of libraries directory)
+ 2. config > medida > slick (setup the slick)
+ 3. view block > fields: $item > formatter: blazy, image style, media switcher: image to colorbox
+ 4. If it's not working, then install the add the code our own js (slick step6. module/custom/$project_name_core/js)
+ 5. If still not working, add below code to lagoon/install.sh, and package.json
+ ```zsh
+
+# install.sh
+ # Move library files
+if [ ! -d  $MY_PATH/web/libraries/blazy ]
+then
+    cp -r $MY_PATH/node_modules/blazy $MY_PATH/web/libraries/blazy
+fi
+
+if [ ! -d  $MY_PATH/web/libraries/colorbox ]
+then
+    cp -r $MY_PATH/node_modules/jquery-colorbox $MY_PATH/web/libraries/colorbox
+fi
+ ```
+ ```json
+  "dependencies": {
+    "blazy": "^1.8.2",
+    "jquery-colorbox": "^1.6.4"
+  }
+ ```

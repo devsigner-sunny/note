@@ -237,3 +237,15 @@ HTML;
 //make sure the container is running
 drush @master ssh
 ```
+
+
+## pre-commit.config
+1. Fix phpcs linting error
+```
+//1. run outside of container
+vendor/bin/phpcs -sp --standard=Drupal --colors --extensions=php,inc,module,install web/modules/custom/thm_modules/
+
+
+// change s to bf like below to use auto fix
+vendor/bin/phpcbf 
+```
