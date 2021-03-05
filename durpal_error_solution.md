@@ -105,3 +105,19 @@ docker-compose logs -f nginx
 2. refresh the page - still not working then,
 3. Remove vendor folder, composer install again 
 4. try composer dump-autoload -o / composer dumpautoload
+
+
+## sql-sync error - permission denied
+```
+[matui]cli-drupal:/app$ drush sa
+Could not load API JWT Token, error was: 'lagoon@ssh.lagoon.amazeeio.cloud: Permission denied (publickey).                                                                                               [warning]
+Could not load API JWT Token, error was: 'lagoon@ssh.lagoon.amazeeio.cloud: Permission denied (publickey).                                                                                               [warning]
+@none
+@self
+default
+```
+check the pygmy status,
+then up the cli container --force
+```
+dcupd --f cli
+```

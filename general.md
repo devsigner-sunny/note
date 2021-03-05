@@ -94,3 +94,35 @@ global-styling:
       //fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap: {}
 
 ```
+
+# Access Someone's local project 
+```
+sudo nano /etc/hosts
+```
+
+then write down the information given by person who share
+```
+192.168.1.26 jtwd.docker.amazee.io 
+```
+and  press enter
+
+
+## permission
+```
+ls -al
+
+//human readable
+ls -alh 
+
+//Recursive
+chmod -R $directoryname
+```
+1. first 3 : root read write excute
+2. second 3 : group
+3. last 3: annonymouse
+
+
+## check what happens when you access a website
+```
+curl -Il https://www.magneticweb.nz/wp-admin    
+```

@@ -31,8 +31,8 @@ drush sa
 #import dump file onto destination database
 drush sql-sync @master @self
 
-#resync
-drush rsync @master:%files @self:%files -v
+#resync - get image files
+drush rsync @master:%files @self:%files -y
 
 
 #grab the file from the stage
@@ -61,6 +61,13 @@ docker network ls
 
 docker inspect $name
 ```
+
+
+## Direct login throuh ssh
+```
+drush uli
+```
+
 
 ## Email
 
@@ -248,4 +255,25 @@ vendor/bin/phpcs -sp --standard=Drupal --colors --extensions=php,inc,module,inst
 
 // change s to bf like below to use auto fix
 vendor/bin/phpcbf 
+```
+
+
+## Pulling data (to sync between lagoon environments)
+```
+#Run a sql-sync
+#SSH into the lagoon server, destination branch
+
+# list all the files in the /tmp directory, & identify which one is the dump from source.
+# it'll be named for the source branch and date/time.
+ls /tmp
+
+#unzip the sql file.
+gunzip /tmp/project_master_123_20120-01-05-154535.sql.gz
+
+# import the SQL file into the database
+drush sql-query "source /tmp/project_master_123_20120-01-05-154535.sql"
+
+
+#to get the files (images etc..)
+drush rsync @master:%files @self:%files -y
 ```
