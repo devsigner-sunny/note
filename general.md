@@ -1,27 +1,3 @@
-## Wordpress - Grabaloan go live
-1. Backup live database
-2. Enable maintenance mode
-3. Git merge stage to live
-4. Copy database over to live
-```
-ssh grabaloan-master@lagoon 
-```
-
-- To do that, you may need to change config file first
-```
-Host lagoon
-  Hostname ssh.lagoon.amazeeio.cloud
-  Port 32222
-  StrictHostKeyChecking no
-  UserKnownHostsFile /dev/null
-```
-
-5. Copy files over
-6. Search and replace url
-7. Make site live
-
-
-
 # Solutions
 
 ## Debug
@@ -126,3 +102,26 @@ chmod -R $directoryname
 ```
 curl -Il https://www.magneticweb.nz/wp-admin    
 ```
+
+
+## Set up Host alias
+```
+ls ~/.ssh
+
+vi ~/.ssh/config
+
+// get inside
+Host lagoon
+  HostName ssh.lagoon.amazeeio.cloud
+  Port 32222
+  IdentityFile ~/.ssh/id_rsa
+
+//If you have a warning : Remot host identification has changed
+rm ~/.ssh/known_hosts  
+
+then,
+ssh zagga-nz-public-master@lagoon
+
+
+## Show the where template comes from
+copy the deployment.service.yml from other project ---- site/default/

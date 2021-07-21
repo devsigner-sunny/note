@@ -121,3 +121,101 @@ then up the cli container --force
 ```
 dcupd --f cli
 ```
+
+
+## pre-commit.config
+1. Fix phpcs linting error
+```
+//1. run outside of container
+vendor/bin/phpcs -sp --standard=Drupal --colors --extensions=php,inc,module,install web/modules/custom/thm_modules/
+
+
+// change s to bf like below to use auto fix
+vendor/bin/phpcbf -sp --standard=Drupal --colors --extensions=php,inc,module,install web/modules/custom/thm_modules/
+```
+
+
+## Docker error approach
+```
+// check status
+docker stats
+
+// chek what happend when you call the sites
+curl -IL http://property-inspection-plus.docker.amazee.io/  
+```
+
+## Docker php error approach
+
+
+dcps
+
+// grab the php name
+docker logs $phpname
+
+
+## Sql-sync Error 
+
+1. try to sql-drop (remove db) first then sql-connect the DB you downloaded. it will be in the temp directory
+
+2. check the temp directory, find the db file
+3. and connect that db ('<' defines which direction DB will flows)
+```
+//from root
+ll /tep/ 
+
+drush sql-connect < $db.sql
+```
+4. if it's still failed, run the debug flag (if you add many vvv, more detail you could see), and find the what is the issue
+```
+drush sql-sync @source @destination -y -d -vvv
+``` 
+5.  
+```
+drush sql-query --help
+```
+
+
+## pymy or docker - Ports are not available it's already used
+
+1. check what it is running on that port number.
+```
+lsof -i :$portNo
+```
+
+2. Kill it that port number
+```
+kill -9 $PID-number
+```
+
+3. check one more time if it's killed properly
+
+
+#### port number - mailhog case
+even if you killed it, still it's running on different PID number then, 
+```
+// find something running name has string 'mail'
+ps aux | grep mail 
+```
+2. if it's in you local/opt/ then check the brew
+```
+brew list
+
+brew info mailhog
+
+brew servecies stop mailhog
+```
+
+
+### Lagoon build gyp python error
+update the dockerfile
+
+```
+RUN apk add --no-cache \
+  g++ \
+  make \
+  libtool \
+  automake \
+  autoconf \
+  python2
+
+```

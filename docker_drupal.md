@@ -28,7 +28,7 @@ docker-compose exec cli bash
 #see a list of available site aliases 
 drush sa
 
-#import dump file onto destination database
+#import dump file onto destination database`
 drush sql-sync @master @self
 
 #resync - get image files
@@ -246,17 +246,6 @@ drush @master ssh
 ```
 
 
-## pre-commit.config
-1. Fix phpcs linting error
-```
-//1. run outside of container
-vendor/bin/phpcs -sp --standard=Drupal --colors --extensions=php,inc,module,install web/modules/custom/thm_modules/
-
-
-// change s to bf like below to use auto fix
-vendor/bin/phpcbf 
-```
-
 
 ## Pulling data (to sync between lagoon environments)
 ```
@@ -277,3 +266,10 @@ drush sql-query "source /tmp/project_master_123_20120-01-05-154535.sql"
 #to get the files (images etc..)
 drush rsync @master:%files @self:%files -y
 ```
+
+
+## package has known vulnerabilities.
+
+### if drupal/core
+- remove web/core, vendoer/pear, composer.lock
+- update compsoer.json to 8.9.15 -> composer update drupal/core-recommended

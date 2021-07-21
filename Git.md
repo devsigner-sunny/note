@@ -51,3 +51,10 @@ git f -a
 git sm co $branchname
 git sm f -a
 ```
+
+
+### see the all changes from specific commit 
+```
+git diff 54b79f2c0e6a04d8bd83d96e2465f853470028db...HEAD
+
+```
