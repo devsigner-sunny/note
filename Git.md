@@ -58,3 +58,23 @@ git sm f -a
 git diff 54b79f2c0e6a04d8bd83d96e2465f853470028db...HEAD
 
 ```
+
+# Error
+## When your submodule lost connection
+fatal: 'sites/all/react/.git' not recognized as a git repository
+
+
+```
+//try run git innit inside of submodule directory
+git init
+
+
+still not working? (if it seems like lost remote)
+//check git config in submodule directory
+cat .git/config 
+
+//if it doesn't have remote url in there, edit the config file
+vim .git/config 
+
+// arrow down, and press 'o', then paste -> esc, :wq
+```

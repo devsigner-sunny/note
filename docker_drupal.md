@@ -273,3 +273,14 @@ drush rsync @master:%files @self:%files -y
 ### if drupal/core
 - remove web/core, vendoer/pear, composer.lock
 - update compsoer.json to 8.9.15 -> composer update drupal/core-recommended
+
+
+# Error
+## When your submodule lost connection
+fatal: 'sites/all/react/.git' not recognized as a git repository
+
+
+```
+try run git innit inside of submodule directory
+$git init
+```

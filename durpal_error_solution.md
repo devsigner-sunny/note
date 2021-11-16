@@ -216,6 +216,15 @@ RUN apk add --no-cache \
   libtool \
   automake \
   autoconf \
-  python2
+  python2 \
 
+```
+
+### when you see the error in drupal "encountered an unexpected error"
+```
+// enable dblog
+drush en dblog
+
+// run
+drush ws
 ```
