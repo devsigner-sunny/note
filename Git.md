@@ -73,8 +73,23 @@ still not working? (if it seems like lost remote)
 //check git config in submodule directory
 cat .git/config 
 
+```
+
+1. solution 1:: create .git/config 
+```
 //if it doesn't have remote url in there, edit the config file
 vim .git/config 
 
 // arrow down, and press 'o', then paste -> esc, :wq
+
+```
+
+2. solution 2:: remove submodule file clone again
+```
+//from the root
+rm -rf $submodule-path
+
+
+// get info from the .gitsubmodules file
+git clone $submodule-url $submodule-path
 ```

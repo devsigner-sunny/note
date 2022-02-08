@@ -245,6 +245,7 @@ HTML;
 drush @master ssh
 ```
 
+ssh dollar-for-schools-stage@lagoon
 
 
 ## Pulling data (to sync between lagoon environments)
@@ -283,4 +284,16 @@ fatal: 'sites/all/react/.git' not recognized as a git repository
 ```
 try run git innit inside of submodule directory
 $git init
+```
+
+# Composer error
+
+ Problem 1
+    - jean85/pretty-package-versions 2.0.4 requires composer-runtime-api ^2.0.0 -> no matching package found.
+    - jean85/pretty-package-versions 2.0.4 requires composer-runtime-api ^2.0.0 -> no matching package found.
+    - Installation request for jean85/pretty-package-versions 2.0.4 -> satisfiable by jean85/pretty-package-versions[2.0.4].
+
+```
+composer self-update --2 // to get version 2
+composer self-update --1 // version 1  
 ```
