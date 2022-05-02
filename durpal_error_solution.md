@@ -39,6 +39,15 @@ docker-compose logs -f nginx
 2. copy the error code, and google it
 3. Find patch (usually green highligted, check version)
 4. Click it and copy the url into composer.json "patches"
+5. run composer install
+```
+ "extra": {
+        "patches": {
+            "drupal/core": {
+                "layoutbuilder-field-limit": "https://www.drupal.org/files/issues/2020-10-23/3029830-26-layout_builder_field_limit.patch"
+            }
+        },
+```
 
 ### whenever you see Assert.php error
 ```zsh
@@ -228,3 +237,20 @@ drush en dblog
 // run
 drush ws
 ```
+
+## Switch composer version
+```
+//version 1
+composer self-update --1
+```
+
+
+### when you have composer install issue becuase of the applied patch.
+
+1. identify which patch causing issue from error messages
+2. go to composer.json, and find the patch
+3. google drupal $module_name > click the one of issue > replace the id from the url with the patch's one
+4. check if its already commited. if it is, click and check which version it is. 
+5. if installed version is too low, update our module, otherwise just remove the patch from the json file
+
+

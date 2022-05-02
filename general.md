@@ -40,7 +40,14 @@ function youthtown_preprocess_html(&$variables) {
 
 ## To give permission
 ```
+//check who am i
+whoami
+
+//give permission to specific directory
 sudo chmod 744 $directory_name
+
+//give permission to all the child directories (-R means recursive)
+sudo chown -R $name:$name .
 ```
 
 

@@ -13,3 +13,11 @@
 2. flush cache
 3. aggregation
 4. Lagoon -> setup.sh
+
+
+# Launching process
+## Email setup
+- get the sengrid acceess key
+- need to add lagoon variable into lagoon (only avaiable who has access)
+- change the value (eg. $USERNAME, value / $PASSWORD, value) 
+- above steps, normally gareth will do. so we just need to preapre sengrid access key and send it to him 
