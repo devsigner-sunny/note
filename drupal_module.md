@@ -18,6 +18,10 @@ dcd en $modulename -y
 dcd cex
 
 #then, make sure to commit the change of configuration
+
+
+#or you can use deploy, it will do everything including flush cache
+drush deploy 
 ```
 
 ## When your module not working properly

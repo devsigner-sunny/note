@@ -71,8 +71,21 @@ drush uli
 
 ## Email
 
+### Testing email through mailhog (pygmy already has mailhog)
+- configure > systems > swiftmailer > test email
+- settings.local.php
+```
+$config['swiftmailer.transport'] = [
+  'transport' => 'sendmail',
+  'sendmail_mode' => 't',
+];
+
+```
+
 ### Testing email 
-1. manually check
+1. the way check manually.
+- go to swiftmailer.module file
+- edit the test message (* EDIT HERE, then TRY SWIFTMAILER TEST IN SYSTEM */)
 ```php
 <?php
 
@@ -285,6 +298,10 @@ fatal: 'sites/all/react/.git' not recognized as a git repository
 try run git innit inside of submodule directory
 $git init
 ```
+
+## Don't use drupal 8.20 with Gutenberg module
+- seems everything works, but drush doesn't work. --> we can't deploy. 
+
 
 # Composer error
 
