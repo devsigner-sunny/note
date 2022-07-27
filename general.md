@@ -132,3 +132,7 @@ ssh zagga-nz-public-master@lagoon
 
 ## Show the where template comes from
 copy the deployment.service.yml from other project ---- site/default/
+
+
+## React Eslint
+phpStorm > preferences > search 'eslint' > Node interpreter: local/node is fine

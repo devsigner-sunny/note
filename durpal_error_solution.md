@@ -254,3 +254,32 @@ composer self-update --1
 5. if installed version is too low, update our module, otherwise just remove the patch from the json file
 
 
+
+# When 'http' does not work, only https works
+
+### 1. Approach the issue
+- Make sure that Mac os Apache is not running. For example updating Mac os might re-enable apache
+```
+sudo lsof -i :80
+```
+- If you see processes running where the user is one www or _www or http then that means apache is running
+```
+ps aux | grep httpd
+```
+
+If you see more than one process then that means apache is running.  
+
+### 2. Solution
+
+If apache is running then stop it
+```
+sudo apachectl stop
+```
+
+You’s also make to make sure apache doesn’t start on boot
+```
+sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+```
+
+Re start pypgmy and you should be good to go.
+
