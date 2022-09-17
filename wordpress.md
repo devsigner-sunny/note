@@ -124,3 +124,12 @@ update ii_options set option_value = 'wp-admin' where option_name = 'whl_redirec
 select * from ii_users;
 ```
 
+
+
+# import db manually
+1. get the db from lagoon dashboard (download backup file)
+2. change the name data.sql and move into project directory
+3. inside of container run this command
+```
+wp db import $filename.sql
+```

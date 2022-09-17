@@ -48,6 +48,8 @@ sudo chmod 744 $directory_name
 
 //give permission to all the child directories (-R means recursive)
 sudo chown -R $name:$name .
+
+sudo chmod -R ug+w web/sites/default 
 ```
 
 
@@ -136,3 +138,7 @@ copy the deployment.service.yml from other project ---- site/default/
 
 ## React Eslint
 phpStorm > preferences > search 'eslint' > Node interpreter: local/node is fine
+
+
+# See hidden files
+- cmd + sift + .

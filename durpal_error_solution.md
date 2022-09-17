@@ -283,3 +283,22 @@ sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 
 Re start pypgmy and you should be good to go.
 
+
+
+# when you lost db
+## how to create dump file in your local
+```
+#drupal7
+drush sql-dump --result-file=db.sql
+
+$drupal8, 9
+drush sql:dump --result-file=../$filename.sql
+```
+
+## restore db (apply local dump file)
+```
+drush sql:query --file=$filename
+```
+
+### Bootstrap hook error inside of container
+- it means you don't have database
