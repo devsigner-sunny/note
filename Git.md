@@ -115,3 +115,103 @@ git clone $submodule-url $submodule-path
 git rm -r --cached path_to_your_folder/
 ```
 - 3. Push your changes to your git repo.
+
+# Setup multiple git accounts on MacOs
+1. Create SSH keys for two GitHub accounts
+
+```
+$ cd ~/.ssh
+$ ssh-keygen -t rsa -b 4096 -C "personal@email.com"
+$ ssh-keygen -t rsa -b 4096 -C "work@work.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/username/.ssh/id_rsa): /Users/dusername/.ssh/id_rsa_company
+```
+2. check, and register ssh 
+
+```
+$ ls -al ~/.ssh
+
+id_rsa_company.pub   
+id_rsa_company      
+id_rsa_personal.pub
+id_rsa_personal
+
+
+# Register ssh
+$ ssh-add id_rsa_personal
+$ ssh-add id-rsa_company
+```
+
+3. Add SSH keys to GitHub accounts
+- Github:: settings -> SSH and GPG keys -> New SSH key
+- paste id_rsa.pub key
+
+
+4. Setup  ~/.ssh/config file
+
+```
+$ sudo nano ~/.ssh/config
+```
+
+```
+# company
+Host company-github.com
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_rsa_company
+
+# personal
+Host personal-github.com
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_rsa_personal
+
+```
+
+5. Make sure it's connected - ssh -T [host] 
+```
+$ ssh -T company-github.com
+Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+
+$ ssh -T personal-github.com 
+Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+
+```
+
+6. Setup gitconfig
+ - global config
+ - set the condition by using includeIf. (projects under Sites/company will use gitconfig-company.)
+ ```
+ $ sudo nano ~/.gitconfig
+ ```
+ ```
+ [user]
+  email = personal@email.com
+  name = personal
+[includeIf "gitdir:~/Sites/company/"]
+  path = .gitconfig-company
+ ```
+ - company config
+ ```
+$ sudo nano ~/.gitconfig-company
+ ```
+```
+[user]
+  email = work@email.com
+  name = work
+```
+
+7. How to use
+- check the list at Sites/company/project1
+```
+~Sites/company/project1
+$ git config --list
+``` 
+-  when you clone the project, git clone [host]:[githubId]/[repositoryName]
+ - [host] is what you setup in ~/.ssh/config 
+```
+# normal way (clone with SSH) -- X
+$ git clone git@github.com:user/project1.git
+
+$ git clone company-github.com:user/project1.git
+```
