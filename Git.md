@@ -211,7 +211,7 @@ $ git config --list
  - [host] is what you setup in ~/.ssh/config 
 ```
 # normal way (clone with SSH) -- X
-$ git clone git@github.com:user/project1.git
+$ git clone git@gitlab.com:user/project1.git
 
-$ git clone company-github.com:user/project1.git
+$ git clone work-gitlab.com:user/project1.git
 ```

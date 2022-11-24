@@ -103,6 +103,11 @@ where parent_id=""
 export COMPOSER_MEMORY_LIMIT=-1
 
 //run this in container, and try again
+
+php -d memory_limit=-1 `which drush` $drushcommand
+
+//eg
+php -d memory_limit=-1 `which drush` deploy
 ```
 
 
@@ -302,3 +307,12 @@ drush sql:query --file=$filename
 
 ### Bootstrap hook error inside of container
 - it means you don't have database
+
+## platform.sh vs lagoon
+- To point to the lagoon, add this code in settings.local.php
+- Don't use platform build, it will mess your setting.local.php path.
+```
+if (file_exists(__DIR__ . '/settings.lagoon.php')) {
+  include __DIR__ . '/settings.lagoon.php';
+}
+```

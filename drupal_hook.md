@@ -69,3 +69,13 @@ function cloudyards_form_user_login_form_alter(&$form, &$form_state, $form_id) {
   ];
 }
 ```
+
+
+## ModalkLInkController
+- To open the link what we wanna show as Modal
+- in Editor (such as gutenberg, ckeditor), when user create a link and that link meet some conditions following the code, user can open other node/taxonomy as Modal popup in Ajax.
+```
+// For example
+
+<a class="use-ajax" data-dialog-type="modal" href="/modal_link/node/292?title=foo&amp;view_mode=teaser">Sssss</a>
+```

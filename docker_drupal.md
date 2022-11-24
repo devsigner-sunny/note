@@ -314,3 +314,8 @@ $git init
 composer self-update --2 // to get version 2
 composer self-update --1 // version 1  
 ```
+
+## what is the difference between docker-compose up -d --f $imagename vs docker-compose up -d -b $imagename
+- if your local project build previously, -f keyword just use that one.
+- -b keyworkd will let you rebuild image instead of use previous one.
+- so when you change php version or something need to rebuild, should use -b keyword.
