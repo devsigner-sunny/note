@@ -319,3 +319,11 @@ composer self-update --1 // version 1
 - if your local project build previously, -f keyword just use that one.
 - -b keyworkd will let you rebuild image instead of use previous one.
 - so when you change php version or something need to rebuild, should use -b keyword.
+
+
+## Rebuild new image
+--f keyword it just for the container. still using existing image. if you wanna rebuild
+```
+// example: rebuild cli php
+docker-compose up -d --build cli php
+```
