@@ -49,6 +49,11 @@ docker-compose logs -f nginx
         },
 ```
 
+
+### When you meet werver error 503
+1. check if that project using varnish
+2. if it use varnish, just use nginx local url. (easy way)
+
 ### whenever you see Assert.php error
 ```zsh
 dc up -d --f
